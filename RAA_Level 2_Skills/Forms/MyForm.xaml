@@ -18,7 +18,7 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="0">This is a label</Label>
+        <Label Grid.Row="0">This is form 1</Label>
         <TextBlock Grid.Row="1">This is a text block</TextBlock>
         <StackPanel Orientation="Horizontal" Grid.Row="2">
             <RadioButton x:Name="rb1" GroupName="Group1" Content="Item 1" Margin="0,0,10,0" IsChecked="True"/>

@@ -14,7 +14,7 @@ using System.Reflection;
 namespace RAA_Level_2_Skills
 {
     [Transaction(TransactionMode.Manual)]
-    public class Command : IExternalCommand
+    public class Command2 : IExternalCommand
     {
         public Result Execute(
           ExternalCommandData commandData,
@@ -29,7 +29,8 @@ namespace RAA_Level_2_Skills
             // put any code needed for the form here
 
             // open form
-            MyForm currentForm = new MyForm()
+            List<string> strings = new List<string> { "abc", "bcd", "cde", "def"};
+            MyForm2 currentForm = new MyForm2("This is the text from the command file!", doc, strings)
             {
                 Width = 800,
                 Height = 450,
