@@ -28,21 +28,25 @@ namespace RAA_Level_2_Skills
             InitializeComponent();
             myDoc = doc;
 
-            lblLabel.Content = testText + doc.PathName;
-
-            foreach(string item in listBoxItems)
+            if (testText == "" && listBoxItems == null)
+                PopulateControls();
+            else
             {
-                lbxText.Items.Add(item);
-            }
+                lblLabel.Content = testText + doc.PathName;
 
-            cmbViews.Items.Add("This is my first combobox item");
-            cmbViews.Items.Add("This is my second combobox item");
+                foreach (string item in listBoxItems)
+                {
+                    lbxText.Items.Add(item);
+                }
+
+                cmbViews.Items.Add(testText);
+            }
 
             cmbViews.SelectedIndex = 0;
 
         }
 
-        public void DocumentTest()
+        public void PopulateControls()
         {
             FilteredElementCollector collector = new FilteredElementCollector(myDoc);
             collector.OfCategory(BuiltInCategory.OST_Views);
@@ -55,10 +59,27 @@ namespace RAA_Level_2_Skills
             }
             
         }
+        public string GetSelectedComboboxItem()
+        {
+            return cmbViews.SelectedItem.ToString();
+        }
+
+        public List<string> GetSelectedListboxItems()
+        {
+            List<string> returnList = new List<string>();
+
+            foreach(var item in lbxText.SelectedItems)
+            {
+                returnList.Add(item.ToString());
+            }
+
+            return returnList;
+        }
 
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
-            DocumentTest();
+            this.DialogResult = true;
+            this.Close();
         }
     }
 }

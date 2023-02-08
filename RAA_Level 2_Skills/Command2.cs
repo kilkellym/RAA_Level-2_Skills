@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection;
+using System.Windows.Media.Media3D;
+using Windows = System.Windows;
 
 #endregion
 
@@ -30,7 +32,7 @@ namespace RAA_Level_2_Skills
 
             // open form
             List<string> strings = new List<string> { "abc", "bcd", "cde", "def"};
-            MyForm2 currentForm = new MyForm2("This is the text from the command file!", doc, strings)
+            MyForm2 currentForm = new MyForm2("", doc, null)
             {
                 Width = 800,
                 Height = 450,
@@ -39,7 +41,38 @@ namespace RAA_Level_2_Skills
             };
 
             currentForm.ShowDialog();
+ 
+            List<Reference> refList = new List<Reference>();
+            bool flag = true;
 
+            while(flag == true)
+            {
+                try
+                {
+                    Reference curRef = uidoc.Selection.PickObject(ObjectType.Element, "Pick an item");
+                    refList.Add(curRef);
+                }
+                catch (Exception)
+                {
+                    flag = false;
+                }
+            }
+
+            string returnString = "There are " + refList.Count.ToString() + " selected elements";
+            List<string> returnStrings = currentForm.GetSelectedListboxItems();
+
+            MyForm2 currentForm2 = new MyForm2(returnString, doc, returnStrings)
+            {
+                Width = 800,
+                Height = 450,
+                WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen,
+                Topmost = true,
+            };
+
+            currentForm2.ShowDialog();
+
+            string returnString2 = currentForm2.GetSelectedComboboxItem();
+            List<string> returnStrings2 = currentForm2.GetSelectedListboxItems();
 
             // get form data and do something
 

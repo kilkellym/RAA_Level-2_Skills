@@ -20,7 +20,7 @@
 
         <Label x:Name="lblLabel" Grid.Row="0">This is my form 2</Label>
 
-        <ListBox x:Name="lbxText" Grid.Row="4" Margin="20,0,20,0" SelectionMode="Extended" IsEnabled="false"/>
+        <ListBox x:Name="lbxText" Grid.Row="4" Margin="20,0,20,0" SelectionMode="Extended"/>
         <ComboBox x:Name="cmbViews" Grid.Row="5"/>
 
         <Button x:Name="btnOK" Grid.Row="6" Width="100" Height="30" Content="OK" Click="btnOK_Click"/>
